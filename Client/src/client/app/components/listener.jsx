@@ -8,12 +8,12 @@ class Listener extends Component {
 
     constructor(props) {
         super(props);
-        this.movement();
     }
 
 
-    movement() {
-        
+    voteHandler(e) {
+        console.log(e);
+        console.log(e.target.value);
     }
 
     listen() {
@@ -45,7 +45,19 @@ class Listener extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bottom-icons">
+                <div className="emoticon">
+                    <input className="staticEmotion" type="image" src="https://image.ibb.co/hYDopF/Laugh.png" value="Laugh" onClick={this.voteHandler.bind(this)}/>
+                    <img className="pulsingEmotion" src="https://image.ibb.co/hYDopF/Laugh.png" alt="Laugh" />
+                </div>
+                <div className="emoticon">
+                    <input className="staticEmotion" type="image"  src="https://image.ibb.co/dQS3Oa/Love.png" value="Laugh" onClick={this.voteHandler.bind(this)}/>
+                    <img className="pulsingEmotion" src="https://image.ibb.co/dQS3Oa/Love.png" alt="Laugh" />
+                </div>
+                <div className="emoticon">
+                    <input className="staticEmotion" type="image" src="https://image.ibb.co/ndVOOa/Like.png" value="Like" onClick={this.voteHandler.bind(this)}/>
+                    <img className="pulsingEmotion" src="https://image.ibb.co/ndVOOa/Like.png" alt="Laugh" />
+                </div>
             </div> 
         );
     }
