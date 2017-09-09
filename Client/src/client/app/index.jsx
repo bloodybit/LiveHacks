@@ -11,11 +11,17 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { amIElected: false };
+        this.state = { amIElected: false, start: false };
     }
 
     show() {
-        if (this.state.amIElected) {
+        if (!this.state.start) {
+            console.log('INIT');
+            this.listen();
+            return (
+                <div></div>
+            );
+        } else if (this.state.amIElected) {
             console.log('Sinz');
             return (
                 <Singer />
@@ -28,10 +34,39 @@ class App extends Component {
         }
     }
 
+    listen() {
+        const socket = new WebSocket(`ws://stagecast.se/api/events/singing/ws?x-user-listener=1`)
+
+        socket.onmessage = function (event) {
+            console.log(event.data);
+
+            let json = JSON.parse(event.data)
+            console.log("JSON", json);
+
+            if (json.msg.start == true) {
+                console.log("START");
+                setTimeout(
+                    () =>
+                        this.setState({
+                        amIElected: parseInt(Math.random() * 10) == 1,
+                        start: true
+                    }),
+                    1000
+                );
+            }
+        }
+
+        socket.onerror = function () {
+            console.log("error")
+        }
+
+        socket.onopen = function () {
+            console.log("connected to socket")
+        }
+    }
+
     election() {
-        this.setState({
-            amIElected: parseInt(Math.random() * 10) == 1,
-        });
+        this.startSinging();
         console.log("You are elected: ", this.state.amIElected? "true" : "false");
         console.log(this.state);
     }
@@ -43,7 +78,6 @@ class App extends Component {
     render() {
         return (
             <div>
-                <p> Hello React!</p>
                 { this.show() }
                 <Listener />
             </div>
