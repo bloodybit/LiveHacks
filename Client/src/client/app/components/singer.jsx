@@ -5,7 +5,10 @@ class Singer extends Component {
     
     render() {
         return (
-            <h1>SING!</h1>
+            <div>
+                <h1>SING!</h1>
+            </div>
+            
         )
     };
 }
