@@ -15,6 +15,7 @@ class Listener extends Component {
 
 
     voteHandler(e) {
+        e.preventDefault();
         console.log("Clicked", e.target.value);
         const emotion = e.target.value;
 
@@ -29,20 +30,43 @@ class Listener extends Component {
 
     }
 
+    // strangerVote(vote) {
+    //     console.log("strangerVote");
+    //     console.log(vote);
+    //     const emotion = vote;
+    //     console.log(`#${emotion}`);
+    //     $(`#${emotion}`).animate({
+    //         height: "120px",
+    //         width: "120px"
+    //     }, 200, function () {
+    //         $(`#${emotion}`).animate({
+    //             height: "100px",
+    //             width: "100px"
+    //         }, 200)
+    //     });
+    // }
+    
     strangerVote(vote) {
         console.log("strangerVote");
         console.log(vote);
         const emotion = vote;
         console.log(`#${emotion}`);
-        $(`#${emotion}`).animate({
-            height: "120px",
-            width: "120px"
-        }, 200, function () {
-            $(`#${emotion}`).animate({
-                height: "100px",
-                width: "100px"
-            }, 200)
-        });
+
+        let path = "";
+        switch (emotion) {
+            case "Love":
+                path = "https://image.ibb.co/dQS3Oa/Love.png";
+                break;
+            case "Laugh":
+                path = "https://image.ibb.co/hYDopF/Laugh.png";
+                break;
+            case "Like":
+                path = "https://image.ibb.co/ndVOOa/Like.png";
+                break;
+        }
+        $('body').append(`<div class="b" style="position:absolute; opacity: 0.7; bottom:-150px; left:${Math.random()*200};"><img class="small-img" src="${path}"/></div>`);
+        $(".b").animate({ bottom: "+=13300", left: `+=${Math.random() * 2300 }` }, 15000, "swing");
+
     }
 
     listen() {
@@ -78,17 +102,19 @@ class Listener extends Component {
 
     render() {
         return (
-            <div className="bottom-icons">
-                <div className="emoticon">
-                    <input className="staticEmotion" id="Laugh" type="image" src="https://image.ibb.co/hYDopF/Laugh.png" value="Laugh" onClick={this.voteHandler.bind(this)}/>
-                </div>
-                <div className="emoticon">
-                    <input className="staticEmotion" id="Love" type="image"  src="https://image.ibb.co/dQS3Oa/Love.png" value="Love" onClick={this.voteHandler.bind(this)}/>
-                </div>
-                <div className="emoticon">
-                    <input className="staticEmotion" id="Like" type="image" src="https://image.ibb.co/ndVOOa/Like.png" value="Like" onClick={this.voteHandler.bind(this)}/>
-                </div>
-            </div> 
+            <div className="bottom">
+                <div className="bottom-icons">
+                    <div className="emoticon" id="Laugh-container">
+                        <input className="staticEmotion"  id="Laugh" className="vote-icon" type="image" src="https://image.ibb.co/hYDopF/Laugh.png" value="Laugh" onClick={this.voteHandler.bind(this)}/>
+                    </div>
+                    <div className="emoticon" id="Love-container">
+                        <input className="staticEmotion" id="Love" className="vote-icon" type="image"  src="https://image.ibb.co/dQS3Oa/Love.png" value="Love" onClick={this.voteHandler.bind(this)}/>
+                    </div>
+                    <div className="emoticon" id="Like-container">
+                        <input className="staticEmotion" id="Like" className="vote-icon" type="image" src="https://image.ibb.co/ndVOOa/Like.png" value="Like" onClick={this.voteHandler.bind(this)}/>
+                    </div>
+                </div> 
+            </div>
         );
     }
 }
