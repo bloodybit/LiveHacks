@@ -5,6 +5,8 @@
     background-color: black;
     font-size: 54px;
     position: fixed;
+    font-weight: 700;
+    color: #2e3192;
 }
 
 #singThis {
