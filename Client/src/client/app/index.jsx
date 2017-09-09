@@ -11,7 +11,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { amIElected: false, start: false };
+        this.state = { amIElected: true, start: false };
     }
 
     show() {
