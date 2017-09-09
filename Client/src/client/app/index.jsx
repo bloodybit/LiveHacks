@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Image} from 'react';
 import { render } from 'react-dom';
 
 import Singer from './components/singer.jsx';
@@ -19,7 +19,10 @@ class App extends Component {
             console.log('INIT');
             this.listen();
             return (
-                <div></div>
+                <div className="images">
+                    <img className="back" id="one" src="http://stagecast.se/api/content/6968FB86-E5AF-4CD4-9669-39D6F8150ABD/token" />
+                    <img className="back" id="two" src="http://stagecast.se/api/content/49AA4A56-2969-486D-B702-EC83532C03FE/token" />
+                </div>
             );
         } else if (this.state.amIElected) {
             console.log('Sinz');
@@ -35,28 +38,42 @@ class App extends Component {
     }
 
     startSinging() {
+        //this.isElected() 
+        
         this.setState({
-            amIElected: false,
+            amIElected: true, // TODO
             start: true
         });
+        
     }
 
+    isElected() {
+        return Math.random() * 10 === 1; 
+    }
+
+    // if not start listen the channel 
     listen() {
+        
         const socket = new WebSocket(`ws://stagecast.se/api/events/singing/ws?x-user-listener=1`)
 
         const self = this;
 
         socket.onmessage = function (event) {
-            console.log(event.data);
-
-            let json = JSON.parse(event.data)
-            console.log("JSON", json);
-
-            if (json.msg.start == true) {
-                console.log("START");
-                setTimeout(
-                    () => self.startSinging(), 5000
-                );
+            
+            try {
+                let json = JSON.parse(event.data)
+                console.log("JSON", json);
+    
+                if (json.msg.start == true) {
+                    console.log("START");
+                    // I start sisnging, then i close the socket
+                    socket.close();
+                    setTimeout(
+                        () => self.startSinging(), 1000
+                    );
+                }
+            } catch(e){
+                console.error("JSON WRONG: "+e);
             }
         }
 
@@ -83,7 +100,8 @@ class App extends Component {
         return (
             <div>
                 { this.show() }
-                <Listener />
+                {/* <Listener /> */}
+                
             </div>
         );
     }
