@@ -1,6 +1,6 @@
 img{
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
 }
 
 .emoticon {
@@ -13,11 +13,13 @@ img{
     position: relative;
     top: 0;
     left: 0;
-    z-index: 2
+    z-index: 2;
+    opacity: 0.7;
 }
 
 .pulsingEmotion {
-    position: absolute;
-    top: 30px;
-    left: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2
 }
