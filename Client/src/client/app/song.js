@@ -1,9 +1,9 @@
-{
+var song = {
     "lyrics": [ 
         {
             "text": "intro",
-            "time": 10000;
-        }
+            "time": 10000
+        },
         {   
             "text": "Who run the world? Girls!",
             "time": 2000
@@ -102,3 +102,5 @@
         }
     ]
 }
+
+export default song;

@@ -1,0 +1,32 @@
+
+
+.text {
+    z-index: 3;
+    background-color: black;
+    font-size: 54px;
+    position: fixed;
+}
+
+#singThis {
+    z-index: 2;
+    width: 75%;
+    position: fixed;
+    left: 50%;
+    margin-left: -37.5%;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    top: 35%
+}
+
+#sing {
+    color: #2e3192;
+    z-index: 3;
+    top: 10%;
+    text-align: left;
+    font-size: 65px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    max-width: 70%;
+    margin-left: 20px;
+}
