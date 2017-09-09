@@ -23,6 +23,10 @@ class Listener extends Component {
             console.log("EMOTION: ", emotion);
             socket.send(`"${emotion}"`);
         };
+
+        $(`#${emotion}`).addClass("staticEmotion-my-click");
+         setTimeout(function () { $(`#${emotion}`).removeClass("staticEmotion-my-click"); }, 1000);
+
     }
 
     strangerVote(vote) {
