@@ -32,7 +32,7 @@ class App extends Component {
         } else {
             console.log("votz");
             return (
-                <Voter />
+                <Listener />
             )
         }
     }
@@ -41,7 +41,7 @@ class App extends Component {
         //this.isElected() 
         
         this.setState({
-            amIElected: true, // TODO
+            amIElected: false, // TODO
             start: true
         });
         

@@ -102,18 +102,20 @@ class Listener extends Component {
 
     render() {
         return (
-            <div className="bottom">
-                <div className="bottom-icons">
-                    <div className="emoticon" id="Laugh-container">
-                        <input className="staticEmotion"  id="Laugh" className="vote-icon" type="image" src="https://image.ibb.co/hYDopF/Laugh.png" value="Laugh" onClick={this.voteHandler.bind(this)}/>
-                    </div>
-                    <div className="emoticon" id="Love-container">
-                        <input className="staticEmotion" id="Love" className="vote-icon" type="image"  src="https://image.ibb.co/dQS3Oa/Love.png" value="Love" onClick={this.voteHandler.bind(this)}/>
-                    </div>
-                    <div className="emoticon" id="Like-container">
-                        <input className="staticEmotion" id="Like" className="vote-icon" type="image" src="https://image.ibb.co/ndVOOa/Like.png" value="Like" onClick={this.voteHandler.bind(this)}/>
-                    </div>
-                </div> 
+            <div className="container">
+                <div className="bottom">
+                    <div className="bottom-icons">
+                        <div className="emoticon" id="Laugh-container">
+                            <input className="staticEmotion"  id="Laugh" className="vote-icon" type="image" src="https://image.ibb.co/hYDopF/Laugh.png" value="Laugh" onClick={this.voteHandler.bind(this)}/>
+                        </div>
+                        <div className="emoticon" id="Love-container">
+                            <input className="staticEmotion" id="Love" className="vote-icon" type="image"  src="https://image.ibb.co/dQS3Oa/Love.png" value="Love" onClick={this.voteHandler.bind(this)}/>
+                        </div>
+                        <div className="emoticon" id="Like-container">
+                            <input className="staticEmotion" id="Like" className="vote-icon" type="image" src="https://image.ibb.co/ndVOOa/Like.png" value="Like" onClick={this.voteHandler.bind(this)}/>
+                        </div>
+                    </div> 
+                </div>
             </div>
         );
     }
