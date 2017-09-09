@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 
 import Singer from './components/singer.jsx';
 import Voter from './components/voter.jsx';
+import Listener from './components/listener.jsx';
 
 
 
