@@ -8,6 +8,7 @@
     <title>Demo</title>
     <meta name="author" content="Team04">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -104,8 +105,18 @@
             text-align: center;
             position: absolute;
             top: 40%;
-            right: 0;
-            left: 0;
+        }
+        
+        h1#sing {
+            color: #2e3192;
+            z-index: 3;
+            top: 10%;
+            text-align: left;
+            font-size: 65px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            max-width: 70%;
+            margin-left: 20px;
         }
         
         .images {
@@ -113,108 +124,45 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-        }
-        /* #background {
-            content: "";
-            position: fixed;
-            left: -40%;
-            top: -40%;
+            position: relative;
+            top: 0;
+            left: 0;
             z-index: -1;
-            display: block;
-            background-image: url('images/back.png');
-            background-size: cover;
+            background-image: url('images/pattern-yellow.png');
+            background-size: 200% 200%;
             background-position: center;
-            width: 180%;
-            height: 180%;
-            -webkit-animation: spinLeft 35s linear infinite;
-            -moz-animation: spinLeft 35s linear infinite;
-            animation: spinLeft 35s linear infinite;
-        } */
+            background-repeat: no-repeat;
+        }
         
-        #one {
+        #mic {
+            width: 100%;
             position: absolute;
-            top: -30%;
-            left: -30%;
-            width: 160%;
-            height: 160%;
-            z-index: 2;
-            -webkit-animation: spinLeft 35s linear infinite;
-            -moz-animation: spinLeft 35s linear infinite;
-            animation: spinLeft 35s linear infinite;
+            bottom: 0;
+            right: 0;
         }
         
         #two {
             position: absolute;
             top: -30%;
-            left: -30%;
-            width: 160%;
+            left: -40%;
+            width: auto;
             height: 160%;
             z-index: 1;
-            -webkit-animation: spin 25s linear infinite;
-            -moz-animation: spin 25s linear infinite;
-            animation: spin 25s linear infinite;
         }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script text="javascript">
-        $(document).ready(function() {
-            let index = 0;
-            let song = `Who run the world? Girls!\n
-Some of them men think they freak this\n
-Like we do, but no they don't\n
-Make your check, come at they neck\n
-Disrespect us, no they won't\n
-Boy, don't even try to touch this\n
-Boy, this beat is crazy\n
-This is how they made me\n
-Houston, Texas, baby\n
-This goes out to all my girls\n
-That's in the club rocking the latest\n
-Who will buy it for themselves and get more money later\n
-I think I need a barber\n
-None of these niggas can fade me\n
-I'm so good with this, I remind you, I'm so hood with this\n
-Boy, I'm just playing, come here, baby\n
-Hope you still like me, F U Pay me\n
-My persuasion can build a nation\n
-Endless power, with our love we can devour\n
-You'll do anything for me\n
-Who run the world? Girls! Girls!\n
-Who run the world? Girls!\n
-Who run the world? Girls!\n
-Who run the world? Girls!\n`.split("\n\n");
-            console.log(song);
-
-            function printVerse() {
-                console.log(index);
-                if (index < song.length) {
-                    document.getElementById("karaoke").innerHTML = song[index];
-                }
-                index++;
-            }
-
-            function startKaraoke() {
-                setInterval(printVerse, 2000);
-            }
-
-            function startAnimation() {
-
-            }
-
-        });
-    </script>
 
 </head>
 
 <body>
     <div class="images">
-        <img class="back" id="one" src="images/pattern-pink.png" />
-        <img class="back" id="two" src="images/pattern-yellow.png" />
+        <h1 id="sing" class="fadeIn">Sing with us</h1>
+        <img id="mic" src="images/mic.png" />
     </div>
     <!-- <div id="background"></div> -->
     <!-- 
     <button submit="startKaraoke()">Start Karaoke</button>
     <h1 id="karaoke"></h1> -->
+
 
 </body>
 
