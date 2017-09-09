@@ -34,8 +34,17 @@ class App extends Component {
         }
     }
 
+    startSinging() {
+        this.setState({
+            amIElected: false,
+            start: true
+        });
+    }
+
     listen() {
         const socket = new WebSocket(`ws://stagecast.se/api/events/singing/ws?x-user-listener=1`)
+
+        const self = this;
 
         socket.onmessage = function (event) {
             console.log(event.data);
@@ -46,12 +55,7 @@ class App extends Component {
             if (json.msg.start == true) {
                 console.log("START");
                 setTimeout(
-                    () =>
-                        this.setState({
-                        amIElected: parseInt(Math.random() * 10) == 1,
-                        start: true
-                    }),
-                    1000
+                    () => self.startSinging(), 5000
                 );
             }
         }
