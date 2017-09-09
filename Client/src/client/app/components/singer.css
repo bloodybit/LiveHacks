@@ -18,7 +18,9 @@
     color: black;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    top: 35%
+    top: 35%;
+    font-weight: 700;
+    color: #2e3192;
 }
 
 #sing {

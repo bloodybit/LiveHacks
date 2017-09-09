@@ -14,11 +14,15 @@ class Singer extends Component {
             
         }
 
+        this.listen = this.listen.bind(this);
+        this.strangerVote = this.strangerVote.bind(this);
+        this.listen();
+        
         this.startKaraoke.bind(this);
         this.printVerse.bind(this);
 
         console.log(song);
-        let lyrics = song.lyrics;
+        let lyrics = song.lyrics.reverse();
         function play(lyrics) {
             let line = lyrics.pop()
 
@@ -43,7 +47,7 @@ class Singer extends Component {
         setTimeout(() => {
             $('#sing').remove();
             $('#mic').remove();
-        }, 3000);
+        }, 2000);
     }
     printVerse() {
         console.log(this.state.index);
@@ -60,6 +64,91 @@ class Singer extends Component {
         //setInterval(() => this.printVerse(), 2000);
         
     }
+    strangerVote(vote) {
+        console.log("strangerVote");
+        console.log(vote);
+        const emotion = vote;
+        console.log(`#${emotion}`);
+
+        let path = "";
+        switch (emotion) {
+            case "Love":
+                path = "https://image.ibb.co/dQS3Oa/Love.png";
+                break;
+            case "Laugh":
+                path = "https://image.ibb.co/hYDopF/Laugh.png";
+                break;
+            case "Like":
+                path = "https://image.ibb.co/ndVOOa/Like.png";
+                break;
+        }
+        $('body').append(`<div class="b" style="position:absolute; opacity: 0.7; bottom:-150px; left:${Math.random() * 600};"><img class="small-img" src="${path}"/></div>`);
+        $(".b").animate({ bottom: "+=13300", left: `+=${Math.random() * 2300}` }, 15000, "swing");
+
+    }
+
+    listen() {
+        const socket = new WebSocket(`ws://stagecast.se/api/events/comments/ws?x-user-listener=1`)
+
+        const that = this;
+
+        socket.onmessage = function (event) {
+
+            console.log("Event");
+            console.log(event.data);
+
+            let json = JSON.parse(event.data)
+            console.log("JSON", json);
+            if (json.msg == "Love" || json.msg == "Laugh" || json.msg == "Like") {
+                console.log("EMOTION RECEIVED");
+                that.strangerVote(json.msg);
+            }
+
+            if (json.msg == "begin") {
+                console.log(json.msg);
+            }
+        }
+
+        socket.onerror = function () {
+            console.log("error")
+        }
+
+        socket.onopen = function () {
+            console.log("connected to socket")
+        }
+    }
+
+    listen() {
+        const socket = new WebSocket(`ws://stagecast.se/api/events/comments/ws?x-user-listener=1`)
+
+        const that = this;
+
+        socket.onmessage = function (event) {
+
+            console.log("Event");
+            console.log(event.data);
+
+            let json = JSON.parse(event.data)
+            console.log("JSON", json);
+            if (json.msg == "Love" || json.msg == "Laugh" || json.msg == "Like") {
+                console.log("EMOTION RECEIVED");
+                that.strangerVote(json.msg);
+            }
+
+            if (json.msg == "begin") {
+                console.log(json.msg);
+            }
+        }
+
+        socket.onerror = function () {
+            console.log("error")
+        }
+
+        socket.onopen = function () {
+            console.log("connected to socket")
+        }
+    }
+
 
     render() {
         return (

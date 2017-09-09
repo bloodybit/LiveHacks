@@ -1,10 +1,26 @@
-var lyrics = {
+var song = {
     "lyrics": [
         {
-            "text": "Girls, we run this motha WOAH Yep (x4)",
-            "time": 15000
+            "text": "Intro",
+            "time": 100
         },
-        {   
+        {
+            "text": "Girls, we run this motha WOAH Yep (x4)",
+            "time": 5000
+        }, 
+        {
+            "text": "Girls, we run this motha WOAH Yep (x4)",
+            "time": 6000
+        }, 
+        {
+            "text": "Girls, we run this motha WOAH Yep (x4)",
+            "time": 6000
+        }, 
+        {
+            "text": "Girls, we run this motha WOAH Yep (x4)",
+            "time": 5000
+        },
+        {
             "text": "Who run the world? Girls!",
             "time": 22000
         },
